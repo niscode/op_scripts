@@ -36,13 +36,13 @@ def loop(serversoc):
         
         if cmd == 'cmd;action;chime' :
             #print('Ping Pong!')
-            playsound("/Users/shogo/chime.wav")
+            playsound("/Users/itb-OP/op_scripts/chime.wav")
 
         elif cmd == 'cmd;action;chime;From;nano' :
-            playsound("/Users/shogo/chime.wav")
+            playsound("/Users/itb-OP/op_scripts/chime.wav")
 
         elif cmd == 'cmd;action;chime;From;orin' :
-            playsound("/Users/shogo/chime.wav")
+            playsound("/Users/itb-OP/op_scripts/chime.wav")
 
 
 if __name__ == '__main__':

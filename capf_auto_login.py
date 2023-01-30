@@ -3,7 +3,7 @@
 
 # selenium   4.7.2
 from selenium import webdriver
-import chromedriver_binary
+# import chromedriver_binary
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
@@ -18,9 +18,11 @@ id = "OP00" + args.id
 
 # カメラ(マイク)の使用を許可しますか」ダイアログを回避
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")# ヘッドレスオプションを指定
+# options.add_argument("--headless")# ヘッドレスオプションを指定
 options.add_argument("--use-fake-ui-for-media-stream")# ダイアログを回避オプションを指定
 # options.add_argument("--use-fake-device-for-media-stream")# 偽のカメラ・マイクデバイスを用意するオプションを指定
+
+options.add_experimental_option('excludeSwitches', ['enable-logging', 'load-extension', 'enable-automation'])
 
 # Chrome/Chromiumの立ち上げ
 driver = webdriver.Chrome(options=options)
@@ -42,18 +44,18 @@ driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(id)
 # output_device3 = "Poly Sync 20-M Digital Stereo (IEC958)"
 
 time.sleep(3)
-try:
-    Select(driver.find_element(By.XPATH, '//*[@id="deviceIdMic"]')).select_by_visible_text(input_device1)
-except:
-    Select(driver.find_element(By.XPATH, '//*[@id="deviceIdMic"]')).select_by_visible_text(input_device2)
+# try:
+#     Select(driver.find_element(By.XPATH, '//*[@id="deviceIdMic"]')).select_by_visible_text(input_device1)
+# except:
+#     Select(driver.find_element(By.XPATH, '//*[@id="deviceIdMic"]')).select_by_visible_text(input_device2)
 
-try:
-	Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device1)
-except:
-	try:
-		Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device2)
-	except:
-		Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device3)
+# try:
+# 	Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device1)
+# except:
+# 	try:
+# 		Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device2)
+# 	except:
+# 		Select(driver.find_element(By.XPATH, '//*[@id="deviceIdSpk"]')).select_by_visible_text(output_device3)
 
 
 # ログインボタン入力
